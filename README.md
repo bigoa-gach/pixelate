@@ -33,7 +33,15 @@ The list above is actually unnecessary lmaooo, it's just imformation i like to l
 
 Also return the pixel dimensions, total sum of bricks as well as total cost of all bricks.
 
-All this information will be displayed all pretty on a UI and availiable to download as a file (as shown below [when i eventually draw is]).
+All this information will be displayed all pretty on a UI and availiable to download as a file.
+
+<table>
+  <tr><td>I used Microsoft Paint :)</td><td>That's why it sucks :(</td></tr>
+  <tr>
+    <td><img width="500" alt="Pixelate Prompt" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_prompt_ui_design.png"></td>
+    <td><img width="500" alt="Pixelate Result" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_result_ui_design.png"></td>
+  </tr>
+</table>
   
 [//]: # (end what)
 
