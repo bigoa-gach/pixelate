@@ -53,7 +53,7 @@ You are all welcome >:)
 
 [//]: # (end why)
 
-<sup>prolly gonna use C# windows forms because i like the UI :)</sup>
+>prolly gonna use C# windows forms because i like the UI :)
 
 ## Licenses
 ????????
