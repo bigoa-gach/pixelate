@@ -1,7 +1,7 @@
 # pixelate
 Code to pixalate an image, also returning two collections with information like each pixel position and potential lego brick 1x1 design ID (please i know this doesn't make any sense just read the README im sorry) 
 
-_I haven't started this but i will eventually._
+_I haven't started this but i will eventually. all images created in microsoft paint >:)_
 
 [//]: # (what)
 
@@ -27,14 +27,16 @@ As shown above, the idea is to take an image file & scale value, input it into t
 - "colour group" the pixel will fall under (i.e. `#ffffff` and `#f0f0f0` would both fall under "white")
 - z for the "lego brick 1x1 Design ID z/3005"
 
-The list above is actually unnecessary lmaooo, it's just imformation i like to look at (i think i might be neurodivergent, irrelavent mb). The program will also return a dictionary containing the following info:
+The collection above is actually unnecessary lmaooo, it's just imformation i like to look at (i think i might be neurodivergent, irrelavent mb). The program will also return a dictionary containing the following info:
 - key: z for the "lego brick 1x1 Design ID z/3005"
 - value: list for each block:
   - the number of brick of this particular colour
   - the cost of this lego brick
   - the total cost of the sum of these bricks
 
-Also return the pixel dimensions, total sum of bricks as well as total cost of all bricks.
+This dictionary will also include plates/baseplates for the base layer of the LEGO art.
+
+And also return the pixel dimensions, total sum of bricks as well as total cost of all bricks.
 
 All this information will be displayed all pretty on a UI and availiable to download as a file.
 
