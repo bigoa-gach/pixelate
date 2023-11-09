@@ -1,0 +1,82 @@
+Take a peek into my very simple, stupid, little mind >:D
+
+The point of this document is to write down how i am going to approach this code. I usually just make a plan in my head and stick with it but ive got too much going on up there, so here we are. No one needs to read this but you can if you want.
+Random thought: i could use Python or whatever but i'm not because i hate writing in Python (no reason at all, i'm just a hater)
+
+My writing process will be divided into 7 parts (in which i will jump around inevitably): pre-code writing, designing the UI, creating a static class, base functionality, pdf garbage, base plate crap, and spare thoughts that interrupt my thought process so that i have somewhere to put em.
+
+Pre-code Writting
+*****************
+1. Re-install Visual Studio 2022 since my brother uninstalled it off my laptop since it takes up like half of my harddrive storage.
+2. Re-learn how to put my project on this repository on VS 2022 (not hard, ive done it before, just forgot).
+3. Learn how to make a project, like downloadable or whatever its called, so that when people download from this repo, it downloads like a program and not the whole project (theres a name, will figure it out).
+4. Learn how to make pdf downloads in the form (????).
+5. Firgure out how to dynamically classify hexadecimal colours.
+
+Designing UI
+************
+1. Design UI for the Prompt modal according to image in README file.
+  a. Labels: pUI_lbl_pixelate, pUI_lbl_image, pUI_lbl_scale
+  b. Textboxes: pUI_txt_imageName (readonly), pUI_txt_pixelWidth
+  c. Buttons: pUI_btn_uploadFile, pUI_btn_pixelate
+2. Design UI for the Result modal according to image in README file.
+  a. Labels: rUI_lbl_pixelate, rUI_lbl_dimensions, rUI_lbl_sum, rUI_lbl_totalCost
+  b. Textboxes: rUI_txt_dimensions (readonly), rUI_txt_sum (readonly), rUI_txt_totalCost (readonly)
+  c. Buttons: rUI_btn_download
+  d. PictureBox: rUI_pic_transformed
+  e. DataGridView: rUI_dgv_pixels, rUI_dgv_legos
+
+ColoursAndPixels
+****************
+Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes a bitmap and an integer, and returns a new bitmap that has "pixelated" the original bitmap to the given scale. Another method, ColourGroup, that takes an integer (the hexadecimal value of a colour), determines what colour group it falls under, and returns a string that is the colour group.
+
+Base Functionality
+******************
+1. Begin Code for the Prompt Form.
+2. Onclick event for the Upload File button.
+  a. Open file dialog with image filters (jpg, jpeg, png, etc).
+  b. Read the bitmap file, store each pixel hexadecimal colour into a 2d collection (might use lists).
+  c. Update the image name textbox with the name of the file.
+3. Onclick event for the Pixelate button.
+  a. First check that a file has been selected, check if a scale value has been entered, and check if the value is not less than 1 or greater than the width of the image collection.
+  b. Open the Result as modaless.
+  c. Call Pixelate and pass the new bitmap to the Design Form.
+4. Onload event for the Prompt Form.
+  a. Request to the LEGO website and retrieve the information about all the BRICK 1x1 with /3005 at the end of the Design ID (need to learn this).
+  b. Store the brick information into a protected static dictionary (key: colour, value: tuple(design id, cost)).
+5. Begin Code for the Design Form.
+6. Onload Event for the Result Form (this is where i display all the information for everything)
+  a. Display passed bitmap into PictureBox.
+  b. Collect information about each pixel into two different collections (dictionary {key: pixel position, value: tuple (hex colour, colour group, lego design ID), dictionary { key: lego design ID, value: tuple (number of bricks, cost per brick, total cost of brick)}).
+  c. Call ColourGroup to define what colour group each pixel belongs to.
+  d. Display the information of the two collections into a DataGridView.
+  e. Display the pixel dimensions into a Textbox.
+  f. Display the sum of the particles into a Textbox.
+  g. Display the total cost of all Bricks.
+
+PDF File Download
+*****************
+??????? need learn.
+But everything that is displayed on the Result Form will be included in the PDF, as well as  an additional pixelated image with a number for each pixel that correlates with a lego block. Many pixels will have the same number according to their colour group, even if the colours are slightly different, since there isn't a very wide range of colourful 1x1 lego bricks. (i actually just copy pasted this from my README, my brain just passed away earlier i couldnt even produce a cognative thought). But yeah it'll be like one of those match colour things that you see in game ads on your phone. The PDF will probably include more details (idk where i was going with this sentence).
+
+Plate Dilemma
+************
+- Side Info: I thought about including tax but what if you aren't in my home province >:( so tax is unincluded.
+- I think i want to add a seperate cost for the plates, that's an entirely different calculation since the number of base plates are incredibly limited. This would requre a lot of manovering to create plates that are customized to the user (so if they want a lego art that is 24x37, we can make it happen).
+- With the base plates, if the pixelated image is standard size: 16x32, 32x32, 48x48, or any of the regular 2 dimensional plates that range from 1x1 to 16x16; then the base layer (below the layer with the individual bricks) will only be one layer. But if the dimensions are non-conventional (the example i use is 40x40), then the base layer will be two layers, since the bottom most layer will be a combination of plates that add up to the dimensions of the bitmap dimensions, and the second base layer will be used to hold all the bottom pieces together (since the top layer can't do that because all of the bricks are 1x1). The process i create for this will take into account of the cost to optimize the base layer.
+- Where the program collects all of the brick information in the onload event in the Prompt form, that is where we will collect all of the information about the plates as well.
+- As for calculating and determining what plates to use for the base layer, i will make a static method in the ColoursAndPixels class that takes a dimensions or a width/length, and uses the LEGO block info collection to make every possible combination and returns the combo to computes to the least amount of money.
+- This information will be displayed on the Results form, in the second DataGridView along with all the other bricks (that way i don't have to edit my photo lmaoooooooo).
+
+Stray Thoughts
+**************
+Why am I putting so much effort into this? I'm gonna be the only person using this and I'll probaby only use it twice lol.
+My head really hurts rn and i should be working (mb guys)
+I think i can do HTTP in a C# windows form i just have to learn how (i can do this with ease in JavaScript, Python, and PHP but i would rather die than use these sorry guys :P)
+I feel like im severely missing something, whatever.
+If i could somehow create some sort of functionalty that fills a cart full of these lego pieces on the LEGO website without me having to manually make a cart that would be absolutely awesome.
+There is probably a programming language that can do this a lot easier and faster but im genuinely not in the mood for learning sorry guys (and if its Python, and it probably is, id rather die).
+I want to do something fun with C and microcontrollers but i need an idea first (not related to this but just a thought) maybe ill make my own watch that would be sick, though the thought of soldering small enough components on a surface small enough to fit on my wrist makes me want to kill myself. I should finish that stupid binary display termometer (how to spell???? temperature display) first.
+How am i suppost to print all this on pdf i need to learn but im too brain dead.
+JJK is tearing me apart (this is 100% not relavent but that damn show is on my mnd 24/7)
+I wonder if theyll let me bring my laptop to work, prolly not.
