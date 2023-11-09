@@ -7,14 +7,17 @@ _I haven't started this but i will eventually._
 
 What is this?
 -------------
+
 <table>
   <tr>
+    <td>Prompt</td>
     <td>Before</td>
     <td>After</td>
   </tr>
   <tr>
-    <td><img width="200" alt="Unpixelated" src="https://github.com/bigoa-gach/useless_images/blob/main/blonde.jpeg"></td>
-    <td><img width="200" alt="Pixelated" src="https://github.com/bigoa-gach/useless_images/blob/main/blonde_pixel.png"></td>
+    <td><img height="200" alt="Pixelate Prompt" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_prompt_ui_design.png"></td>
+    <td><img height="200" alt="Unpixelated" src="https://github.com/bigoa-gach/useless_images/blob/main/blonde.jpeg"></td>
+    <td><img height="200" alt="Pixelated" src="https://github.com/bigoa-gach/useless_images/blob/main/blonde_pixel.png"></td>
   </tr>
 </table>
 
@@ -23,7 +26,7 @@ As shown above, the idea is to take an image file & scale value, input it into t
 - hexadecimal colour (irrelavent, i just like looking at the hex)
 - "colour group" the pixel will fall under (i.e. `#ffffff` and `#f0f0f0` would both fall under "white")
 - z for the "lego brick 1x1 Design ID z/3005"
-  
+
 The list above is actually unnecessary lmaooo, it's just imformation i like to look at (i think i might be neurodivergent, irrelavent mb). The program will also return a dictionary containing the following info:
 - key: z for the "lego brick 1x1 Design ID z/3005"
 - value: list for each block:
@@ -35,14 +38,12 @@ Also return the pixel dimensions, total sum of bricks as well as total cost of a
 
 All this information will be displayed all pretty on a UI and availiable to download as a file.
 
-<table>
-  <tr><td>I used Microsoft Paint :)</td><td>That's why it sucks :(</td></tr>
-  <tr>
-    <td><img width="500" alt="Pixelate Prompt" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_prompt_ui_design.png"></td>
-    <td><img width="500" alt="Pixelate Result" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_result_ui_design.png"></td>
-  </tr>
-</table>
-  
+<img width="950" alt="Pixelate Result" src="https://github.com/bigoa-gach/useless_images/blob/main/pixelate_result_ui_design.png">
+
+The PDF file will contain all of the information above, as well as an additional pixelated image with a number for each pixel that correlates with a lego block, as shown below. Many pixels will have the same number according to their colour group, even if the colours are slightly different, since there isn't a very wide range of colourful 1x1 lego bricks.
+
+[insert image that i havent drawn yet (ms paint again)]
+
 [//]: # (end what)
 
 
