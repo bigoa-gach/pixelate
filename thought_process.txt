@@ -70,13 +70,14 @@ Plate Dilemma
 
 Stray Thoughts
 **************
-Why am I putting so much effort into this? I'm gonna be the only person using this and I'll probaby only use it twice lol.
-My head really hurts rn and i should be working (mb guys)
-I think i can do HTTP in a C# windows form i just have to learn how (i can do this with ease in JavaScript, Python, and PHP but i would rather die than use these sorry guys :P)
-I feel like im severely missing something, whatever.
-If i could somehow create some sort of functionalty that fills a cart full of these lego pieces on the LEGO website without me having to manually make a cart that would be absolutely awesome.
-There is probably a programming language that can do this a lot easier and faster but im genuinely not in the mood for learning sorry guys (and if its Python, and it probably is, id rather die).
-I want to do something fun with C and microcontrollers but i need an idea first (not related to this but just a thought) maybe ill make my own watch that would be sick, though the thought of soldering small enough components on a surface small enough to fit on my wrist makes me want to kill myself. I should finish that stupid binary display termometer (how to spell???? temperature display) first.
-How am i suppost to print all this on pdf i need to learn but im too brain dead.
-JJK is tearing me apart (this is 100% not relavent but that damn show is on my mnd 24/7)
-I wonder if theyll let me bring my laptop to work, prolly not.
+- Why am I putting so much effort into this? I'm gonna be the only person using this and I'll probaby only use it twice lol.
+- My head really hurts rn and i should be working (mb guys)
+- I think i can do HTTP in a C# windows form i just have to learn how (i can do this with ease in JavaScript, Python, and PHP but i would rather die than use these sorry guys :P)
+- I feel like im severely missing something, whatever.
+- If i could somehow create some sort of functionalty that fills a cart full of these lego pieces on the LEGO website without me having to manually make a cart that would be absolutely awesome.
+- There is probably a programming language that can do this a lot easier and faster but im genuinely not in the mood for learning sorry guys (and if its Python, and it probably is, id rather die).
+- I want to do something fun with C and microcontrollers but i need an idea first (not related to this but just a thought) maybe ill make my own watch that would be sick, though the thought of soldering small enough components on a surface small enough to fit on my wrist makes me want to kill myself. I should finish that stupid binary display termometer (how to spell???? temperature display) first.
+- How am i suppost to print all this on pdf i need to learn but im too brain dead.
+- JJK is tearing me apart (this is 100% not relavent but that damn show is on my mind 24/7)
+- I wonder if theyll let me bring my laptop to work, prolly not.
+- i think im going to rewatch AOT but in dub, i heard its pretty incredible.
