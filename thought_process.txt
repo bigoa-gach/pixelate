@@ -5,13 +5,15 @@ Random thought: i could use Python or whatever but i'm not because i hate writin
 
 My writing process will be divided into 7 parts (in which i will jump around inevitably): pre-code writing, designing the UI, creating a static class, base functionality, pdf garbage, base plate crap, and spare thoughts that interrupt my thought process so that i have somewhere to put em.
 
+Included HSV/HSL conversions to and from RGB 
+
 Pre-code Writting
 *****************
 1. Re-install Visual Studio 2022 since my brother uninstalled it off my laptop since it takes up like half of my harddrive storage.
 2. Re-learn how to put my project on this repository on VS 2022 (not hard, ive done it before, just forgot).
 3. Learn how to make a project, like downloadable or whatever its called, so that when people download from this repo, it downloads like a program and not the whole project (theres a name, will figure it out).
 4. Learn how to make pdf downloads in the form (????).
-5. Firgure out how to dynamically classify hexadecimal colours.
+5. Figure out how to dynamically classify hexadecimal colours.
 
 Designing UI
 ************
@@ -28,8 +30,107 @@ Designing UI
 
 ColoursAndPixels
 ****************
-Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes a bitmap and an integer, and returns a new bitmap that has "pixelated" the original bitmap to the given scale. Another method, ColourGroup, that takes an integer (the hexadecimal value of a colour), determines what colour group it falls under, and returns a string that is the colour group as well as the LEGO Design ID.
-- For ColourGroup, all the possible groups are: White, Grey, Black, Red, Orange, Yellow, Green, Blue, Purple, Pink, and Brown
+Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes a bitmap and an integer, and returns a new bitmap that has "pixelated" the original bitmap to the given scale. Another method, ColourGroup, that takes an integer (the hexadecimal value of a colour), determines what colour group it falls under, and returns a string that is the colour group as well as the LEGO Element/Design ID.
+- The purpose of the colour grouping is to (1) make it easier to find the LEGO Element/Design ID in the dictionary, and (2) make it easy for the user to identify the LEGO piece when building the art.
+- For ColourGroup, all the possible groups (41) equate to a LEGO Element/Design ID, and they are: 
+  - White (300501/3005)
+  - Black (300526/3005)
+  - Bright Red (300521/3005)
+  - Dark Red (4541376/3005)
+  - Bright Orange (4173805/3005)
+  - Bright Yellow (300524/3005)
+  - Dark Green (300528/3005)
+  - Bright Yellowish Green (4220634/3005)
+  - Earth Green (4521915/3005)
+  - Sand Green (4521948/3005)
+  - Bright Blue (300523/3005)
+  - Medium Blue (4179830/3005)
+  - Earth Blue (4255413/3005)
+  - Medium Azur (4619652/3005)
+  - Sand Blue (4620077/3005)
+  - Light Purple (4286050/3005)
+  - Bright Purple (4492224/3005)
+  - Brick Yellow (4113915/3005)
+  - Reddish Brown (4211242/3005)
+  - Dark Stone Grey (4211098/3005)
+  - Medium Stone Grey (4211389/3005)
+  - Medium Lavender (4651903/3005)
+  - Sand Yellow (6001824/3005)
+  - Bright Reddish Violet (6022035/3005)
+  - Cool Yellow (6022084/3005)
+  - Medium Nougat (6057986/3005)
+  - Olive Green (6058242/3005)
+  - Flame Yellowish Orange (6061685/3005)
+  - Medium Lilac (6084028/3005)
+  - Lavender (6097053/3005)
+  - Bright Bluish Green (6213776/3005)
+  - Dark Azur (6225538/3005)
+  - Dark Brown (6226437/3005)
+  - Aqua (6236576/3005)
+  - Dark Orange (6254484/3005)
+  - Light Royal Blue (6285271/3005)
+  - Nougat (6330369/3005)
+  - Light Nougat (6369191/3005)
+  - Vibrant Coral (6422915/3005)
+  - Vibrant Yellow (6427904/3005)
+  - Bright Green (6452907/3005)
+
+HSL (hue, saturation, lightness) to RGB 
+***************************************
+Compute the chroma, by multiplying saturation by the maximum chroma for a given lightness or value. Find the point on one of the bottom three faces of the RGB cube which has the same hue and chroma as our color (and therefore projects onto the same point in the chromaticity plane). Add equal amounts of R, B, and B to reach the proper lightness or value.
+- hue H ∈ [0°, 360°)
+- saturation SL ∈ [0, 1]
+- lightness L ∈ [0, 1]
+- C (chroma) = (1 - |2L - 1|) * SL
+
+Point along the bottom three faces of the RGB cube, with same hue and chroma as our colour (using the intermediate value X for the second largest component of this colour)
+- H' = H / 60°
+- X = C x (1 - |H' % 2 - 1|) 
+- H' % 2 refers to the remainder of the Euclidean Division of H' by 2 (H' is not necessarily an integer)
+
+(R1, G1, B1) = {
+  (C, X, 0) if 0 <= H' < 1,
+  (X, C, 0) if 1 <= H' < 2,
+  (0, C, X) if 2 <= H' < 3,
+  (0, X, C) if 3 <= H' < 4,
+  (X, 0, C) if 4 <= H' < 5,
+  (C, 0, X) if 5 <= H' < 6
+}
+
+When H' is an integer, the "neighbouring" formula would yield the same results, as X = 0 or X = C, as appropiate.
+
+Find RGB by adding the same amount to each component, to match lightness
+- m = L - C/2
+- (R, G, B) = (R1 + m, G1 + m, B1 + m)
+
+RGB to HSL (hue, saturation, lightness) or HSV (hue, saturation, value)
+***********************************************************************
+Converting RGB to HSL can allow me to classify the colours more easily
+Determine the value, chroma, lightness, common hue, and distinct saturations
+- V = max(R, G, B)
+- C = V - min(R, G, B)
+- L = V - C / 2
+
+H = {
+  0°, if C = 0
+  60° * (((G - B) / C) % 6), if V = R
+  60° * (((B - R) / C) + 2), if V = G
+  60° * (((R - G) / C) + 4), if V = B
+}
+
+SV = {
+  0, if V = 0,
+  C / V, otherwise
+}
+
+SL = {
+  0, if L = 0 or L = 0,
+  C / (1 - |2V - C - 1|) = (2(V - L)) / (1 - |2L - 1|) = (V - L) / min(L, 1 - L), otherwise
+}
+
+Classification of HSL Colours
+*****************************
+With the previous process, we can use the HSL and an extensive switch case to group each colour into the 41 colour groups. We can use the lightness first to determine if the colour is white, or black, use the saturation to determine how grey a value is (and the lightness to determine how dark of light the grey is), and then compare the hue to determine what colour it is. I propbably won't do it exactly like this since I need to be very particular about the colours (since i want to classify into 41 groups) but this is how i'll start it).
 
 Base Functionality
 ******************
@@ -43,12 +144,12 @@ Base Functionality
   b. Open the Result as modaless.
   c. Call Pixelate and pass the new bitmap to the Design Form.
 4. Onload event for the Prompt Form.
-  a. Request to the LEGO website and retrieve the information about all the BRICK 1x1 with /3005 at the end of the Design ID (need to learn this).
-  b. Store the brick information into a protected static dictionary (key: colour, value: tuple(design id, cost)).
+  a. Request to the LEGO website and retrieve the information about all the BRICK 1x1 with /3005 at the end of the Element/Design ID (need to learn this).
+  b. Store the brick information into a protected static dictionary (key: colour, value: tuple(Element/Design ID, cost)).
 5. Begin Code for the Design Form.
 6. Onload Event for the Result Form (this is where i display all the information for everything)
   a. Display passed bitmap into PictureBox.
-  b. Collect information about each pixel into two different collections (dictionary {key: pixel position, value: tuple (hex colour, colour group, lego design ID), dictionary { key: lego design ID, value: tuple (number of bricks, cost per brick, total cost of brick)}).
+  b. Collect information about each pixel into two different collections (dictionary {key: pixel position, value: tuple (hex colour, colour group, lego Element/Design ID), dictionary { key: lego Element/Design ID, value: tuple (number of bricks, cost per brick, total cost of brick)}).
   c. Call ColourGroup to define what colour group each pixel belongs to.
   d. Display the information of the two collections into a DataGridView.
   e. Display the pixel dimensions into a Textbox.
