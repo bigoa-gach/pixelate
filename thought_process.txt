@@ -28,7 +28,8 @@ Designing UI
 
 ColoursAndPixels
 ****************
-Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes a bitmap and an integer, and returns a new bitmap that has "pixelated" the original bitmap to the given scale. Another method, ColourGroup, that takes an integer (the hexadecimal value of a colour), determines what colour group it falls under, and returns a string that is the colour group.
+Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes a bitmap and an integer, and returns a new bitmap that has "pixelated" the original bitmap to the given scale. Another method, ColourGroup, that takes an integer (the hexadecimal value of a colour), determines what colour group it falls under, and returns a string that is the colour group as well as the LEGO Design ID.
+- For ColourGroup, all the possible groups are: White, Grey, Black, Red, Orange, Yellow, Green, Blue, Purple, Pink, and Brown
 
 Base Functionality
 ******************
