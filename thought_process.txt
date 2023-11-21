@@ -81,7 +81,7 @@ Compute the chroma, by multiplying saturation by the maximum chroma for a given 
 - hue H ∈ [0°, 360°)
 - saturation SL ∈ [0, 1]
 - lightness L ∈ [0, 1]
-- C (chroma) = (1 - |2L - 1|) * SL
+- chroma C = (1 - |2L - 1|) * SL
 
 Point along the bottom three faces of the RGB cube, with same hue and chroma as our colour (using the intermediate value X for the second largest component of this colour)
 - H' = H / 60°
