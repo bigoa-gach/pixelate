@@ -74,6 +74,7 @@ Define a static class, ColoursAndPixels, that has a method, Pixelate, that takes
   - Vibrant Coral (6422915/3005)
   - Vibrant Yellow (6427904/3005)
   - Bright Green (6452907/3005)
+If possible, try to retrieve this information dynamically (unnecessary but i want to keep up my skills lol), possibly with HTTP GET requests.
 
 HSL (hue, saturation, lightness) to RGB 
 ***************************************
